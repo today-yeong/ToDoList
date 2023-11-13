@@ -30,18 +30,18 @@
         }
     </style>
 
-    <title>To-Do</title>
+    <title>소금의 할 일 꾸러미</title>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="page-header">
-                <h1>🥸 오늘의 업무 <small> by 소금 in 내일의쓰임☀️ </small></h1>
+                <h1>🥸 오늘의 할 일 <small> by 소금 in 내일의쓰임☀️ </small></h1>
             </div>
         </div>
         <div class="content">
             <div class="messageDiv">
-                <form action="" method="POST">{% csrf_token %}
+                <form action='./createTodo' method="POST">{% csrf_token %}
                     <div class="input-group">
                         <input id="todoContent" name="todoContent" type="text" class="form-control" placeholder="오늘의 메모">
                         <span class="input-group-btn">
@@ -63,12 +63,11 @@
                             </span>
                         </div>
                     </form>
-
                 </ul>
             </div>
         </div>
         <div class="panel-footer">
-            Mini project with luman
+            Mini project with django
         </div>
     </div>
 </body>
