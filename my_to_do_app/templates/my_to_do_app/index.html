@@ -57,7 +57,7 @@
                     {% for todo in todos %}
                     <form action="./deleteTodo" method="GET">
                         <div class="input-group" name='todo1'>
-                            <li class="list-group-item">{{ todo.content }} [작성일: {{ todo.created_at|date:"F d, Y H:i:s" }}]</li>
+                            <li class="list-group-item" style=" color: green;">{{ todo.content }} [{{ todo.created_at|date:"Y년 F d일, H:i" }}]</li>
                             <input type="hidden" id="todoNum" name="todoNum" value="{{ todo.id }}"></input>
                             <span class="input-group-addon">
                                 <button type="submit" class="custom-btn btn btn-danger">완료</button>
