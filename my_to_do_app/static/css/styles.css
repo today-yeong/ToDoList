@@ -1,0 +1,16 @@
+/* static/css/styles.css */
+
+.header {
+    text-align: center;
+}
+
+.page-header {
+    position: relative;
+}
+
+.page-header img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
