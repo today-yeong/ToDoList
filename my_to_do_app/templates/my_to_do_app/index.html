@@ -41,7 +41,7 @@
         </div>
         <div class="content">
             <div class="messageDiv">
-                <form action='./createTodo' method="POST">{% csrf_token %}
+                <form action='/createTodo/' method="POST">{% csrf_token %}
                     <div class="input-group">
                         <input id="todoContent" name="todoContent" type="text" class="form-control" placeholder="오늘의 메모">
                         <span class="input-group-btn">
@@ -55,9 +55,9 @@
                 <ul class="list-group">
 
                     {% for todo in todos %}
-                    <form action="" method="GET">
+                    <form action="./deleteTodo" method="GET">
                         <div class="input-group" name='todo1'>
-                            <li class="list-group-item">{{ todo.content }}></li>
+                            <li class="list-group-item">{{ todo.content }}</li>
                             <input type="hidden" id="todoNum" name="todoNum" value="{{ todo.id }}"></input>
                             <span class="input-group-addon">
                                 <button type="submit" class="custom-btn btn btn-danger">완료</button>
