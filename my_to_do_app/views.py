@@ -19,11 +19,10 @@ def index(request):
 def createTodo(request):
     user_input_str = request.POST['todoContent']
 
-    new_todo= Todo(content =user_input_str)
+    new_todo = Todo(content=user_input_str)
     new_todo.save()
 
     return HttpResponseRedirect(reverse('index'))
-
     #return HttpResponse("메모한 건 여기에 쌓여요 : " + user_input_str)
 
 
