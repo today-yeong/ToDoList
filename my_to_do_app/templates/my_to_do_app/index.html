@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- Boot strap -->
+    <!-- Bootstrap -->
     <!-- 합쳐지고 최소화된 최신 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!-- 부가적인 테마 -->
@@ -13,22 +13,42 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     <style>
-        .content{
+        .content {
             height: 75%;
+            text-align: left; /* 텍스트를 왼쪽 정렬합니다. */
         }
-        .messageDiv{
+
+        .messageDiv {
             margin-top: 20px;
             margin-bottom: 50px;
         }
-        .toDoDiv{
 
+        .toDoDiv {
+            text-align: center; /* 이미지를 정중앙 정렬합니다. */
         }
-        .custom-btn{
+
+        .custom-btn {
             font-size: 10px;
         }
-        .panel-footer{
-            height:10%;
-            color:gray;
+
+        .panel-footer {
+            height: 10%;
+            color: gray;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin-top: 20px;
+        }
+
+        .centered-image {
+            display: block;
+            margin: auto;
         }
     </style>
 
@@ -38,8 +58,14 @@
     <div class="container">
         <div class="header">
             <div class="page-header text center">
-                <img src="{% static 'images/logo.png' %}" alt="로고" style=" width: 200px;margin: auto; display: block;">
-                <h1>🥸 오늘의 할 일 <small> by 소금 in 내일의쓰임☀️ </small></h1>
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <h1>🥸 오늘의 할 일 <small> by 소금 in 내일의쓰임☀️ </small></h1>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{% static 'images/logo.png' %}" alt="로고" style="width: 200px;" class="centered-image">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="content">
@@ -56,7 +82,6 @@
 
             <div class="toDoDiv">
                 <ul class="list-group">
-
                     {% for todo in todos %}
                     <form action="./deleteTodo" method="GET">
                         <div class="input-group" name='todo1'>
