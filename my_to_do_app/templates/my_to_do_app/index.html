@@ -15,7 +15,6 @@
     <style>
         .content {
             height: 75%;
-            text-align: left; /* 텍스트를 왼쪽 정렬합니다. */
         }
 
         .messageDiv {
@@ -24,7 +23,7 @@
         }
 
         .toDoDiv {
-            text-align: center; /* 이미지를 정중앙 정렬합니다. */
+
         }
 
         .custom-btn {
@@ -33,37 +32,28 @@
 
         .panel-footer {
             height: 10%;
-            color: gray;
+            color: green;
         }
 
-        .header {
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            margin-top: 20px;
-        }
-
-        .centered-image {
-            display: block;
-            margin: auto;
-        }
     </style>
 
     <title>소금의 할 일 꾸러미</title>
 </head>
 <body>
+
     <div class="container">
         <div class="header">
             <div class="page-header text center">
                 <div class="row">
-                    <div class="col-md-6 text-left">
-                        <h1>🥸 오늘의 할 일 <small> by 소금 in 내일의쓰임☀️ </small></h1>
+                    <div class="col-12">
+                        <div class=" text-center">
+                            <img src="{% static 'images/logo.png' %}" alt="로고" style="width: 200px;" class="centered-image">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <img src="{% static 'images/logo.png' %}" alt="로고" style="width: 200px;" class="centered-image">
+                </div>
+                <div class="row">
+                    <div class="col-12 text-left">
+                        <h1>🥸 오늘의 할 일 <small> by 소금 in 내일의쓰임☀️ </small></h1>
                     </div>
                 </div>
             </div>
@@ -87,7 +77,7 @@
                         <div class="input-group" name='todo1'>
                             <li class="list-group-item">
                                 {{ todo.content }}
-                                <span class="text-success">[{{ todo.created_at|date:"Y년 F d일, H:i" }}]</span>
+                                <span class="text-success">({{ todo.created_at|date:"Y년 F d일, H:i" }})</span>
                             </li>
                             <input type="hidden" id="todoNum" name="todoNum" value="{{todo.id}}">
                             <span class="input-group-addon">
@@ -100,6 +90,12 @@
                 </ul>
             </div>
         </div>
+
+        <div class="exportDiv">
+        <a href="{% url 'exportToExcel' %}" class="btn btn-primary" download>내보내기</a>
+        </div>
+
+
         <div class="panel-footer">
             Mini project with django
         </div>

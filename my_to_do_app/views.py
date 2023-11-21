@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import *
+import pandas as pd
+from datetime import datetime
 
 '''
 def index(request):
@@ -33,3 +35,27 @@ def deleteTodo(request):
     todo.delete()
     return HttpResponseRedirect(reverse('index'))
 
+# 수정된 exportToExcel 함수
+def exportToExcel(request):
+    todos = Todo.objects.all()
+
+    # 데이터 프레임 생성
+    data = {'Content': [], 'Created_at': []}
+    for todo in todos:
+        data['Content'].append(todo.content)
+        data['Created_at'].append(todo.created_at.strftime('%Y-%m-%d %H:%M:%S'))
+
+    df = pd.DataFrame(data)
+
+    # 현재 시간을 기준으로 엑셀 파일명 생성
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    excel_filename = f'todo_export_{timestamp}.xlsx'
+
+    # 엑셀 파일로 저장
+    df.to_excel(excel_filename, index=False)
+
+    # 파일 다운로드 응답
+    with open(excel_filename, 'rb') as excel_file:
+        response = HttpResponse(excel_file.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = f'attachment; filename={excel_filename}'
+    return response
